@@ -128,11 +128,14 @@ function Modal({ isOpen, onClose, header, details, footer, onSubmit }) {
     </>
   );
 
+  // Append .modal--open for scale/opacity transition to trigger when mounted
+  const modalClass = "modal modal--open";
+
   // Wrapper: if onSubmit, wrap via <form>; else <div>
   const InnerWrapper = onSubmit
     ? (
       <form
-        className="modal"
+        className={modalClass}
         ref={modalRef}
         role="dialog"
         aria-modal="true"
@@ -147,7 +150,7 @@ function Modal({ isOpen, onClose, header, details, footer, onSubmit }) {
     )
     : (
       <div
-        className="modal"
+        className={modalClass}
         ref={modalRef}
         role="dialog"
         aria-modal="true"
